@@ -1,0 +1,67 @@
+from flask import Flask, render_template, request, jsonify
+
+app = Flask(__name__)
+
+# Data tanya-jawab sesuai materi dakwah
+dummy_qa = [
+    {
+        "question": "Apa hukum menggunakan agama untuk kepentingan pribadi?",
+        "answer": "Menggunakan agama untuk kepentingan pribadi adalah perbuatan yang dilarang dalam Islam. Allah melarang menjual ayat-Nya demi kepentingan dunia, sebagaimana tercantum dalam QS. Al-Baqarah: 41. Agama adalah untuk mendekatkan diri kepada Allah, bukan untuk meraih keuntungan duniawi."
+    },
+    {
+        "question": "Bagaimana cara agar dakwah tidak tercampur dengan kepentingan pribadi?",
+        "answer": "Agar dakwah tetap murni, niat harus diluruskan hanya untuk Allah semata, bukan untuk mendapatkan pujian atau materi. Rasulullah ﷺ bersabda bahwa ilmu yang dipelajari untuk dunia tidak akan mencium bau surga (HR. Abu Dawud)."
+    },
+    {
+        "question": "Apa dampak buruk dari menyalahgunakan agama untuk kepentingan pribadi?",
+        "answer": "Menyalahgunakan agama untuk kepentingan pribadi dapat menyesatkan umat, menciptakan ketidakadilan, dan merusak citra Islam. Allah melarang perbuatan ini dan menyebutnya sebagai bentuk kezaliman, sebagaimana disebutkan dalam QS. Ash-Shaff: 7."
+    },
+    {
+        "question": "Mengapa agama tidak boleh digunakan untuk tujuan duniawi?",
+        "answer": "Agama adalah jalan hidup yang seharusnya membawa seseorang lebih dekat kepada Allah, bukan untuk mengejar keuntungan duniawi. Allah melarang umat-Nya untuk menjual ayat-Nya dan hukum-Nya demi keuntungan duniawi (QS. Al-Baqarah: 41)."
+    },
+    {
+        "question": "Bagaimana seharusnya seorang da'i menjaga niatnya?",
+        "answer": "Seorang da'i harus menjaga niatnya dengan selalu mengingat bahwa dakwah adalah untuk menyampaikan kebenaran dan petunjuk Allah, bukan untuk mencari keuntungan pribadi atau pengakuan dari orang lain. Niat yang tulus akan membawa dakwah yang lebih berkah."
+    },
+    {
+        "question": "Apa yang dimaksud dengan ‘menjual agama untuk dunia’ dalam Islam?",
+        "answer": "‘Menjual agama untuk dunia’ adalah tindakan menggunakan ajaran agama untuk mendapatkan keuntungan duniawi, seperti kekayaan, jabatan, atau ketenaran. Tindakan ini sangat dilarang dalam Islam karena mengaburkan tujuan utama agama yang seharusnya mendekatkan diri kepada Allah."
+    },
+    {
+        "question": "Apa yang terjadi jika seseorang menggunakan agama untuk keuntungan pribadi?",
+        "answer": "Menggunakan agama untuk keuntungan pribadi dapat mengarah pada perbuatan nifaq (hipokrit) dan dapat merusak hubungan dengan Allah dan umat. Islam mengajarkan agar setiap amalan dilakukan dengan ikhlas hanya karena Allah, bukan untuk tujuan duniawi."
+    },
+    {
+        "question": "Bagaimana cara menghindari godaan untuk menggunakan agama demi kepentingan pribadi?",
+        "answer": "Untuk menghindari godaan ini, seseorang harus memperkuat iman, selalu introspeksi diri, dan menjaga keikhlasan dalam setiap tindakan. Selain itu, penting untuk mendekatkan diri kepada Allah dengan doa dan dzikir agar selalu dilindungi dari godaan duniawi."
+    },
+    {
+        "question": "Apa yang seharusnya menjadi tujuan utama dakwah dalam Islam?",
+        "answer": "Tujuan utama dakwah dalam Islam adalah untuk menyampaikan wahyu Allah kepada umat manusia agar mereka mendapatkan petunjuk dan rahmat-Nya. Dakwah tidak boleh bertujuan untuk mendapatkan keuntungan pribadi, jabatan, atau pengaruh di dunia."
+    },
+    {
+        "question": "Apa hukumnya memanfaatkan ajaran agama untuk menarik massa atau pengikut?",
+        "answer": "Memanfaatkan ajaran agama untuk menarik massa atau pengikut demi kepentingan pribadi adalah perbuatan yang tercela dalam Islam. Dakwah harus dilaksanakan dengan tujuan semata-mata untuk mendapatkan ridha Allah, bukan untuk kepentingan dunia."
+    }
+]
+
+@app.route('/')
+def index():
+    return render_template('index.html')
+
+@app.route('/ask', methods=['POST'])
+def ask():
+    question = request.form['question'].lower().strip()
+    answer = "Maaf, pertanyaan Anda belum bisa dijawab oleh sistem."
+
+    # Pencocokan sederhana
+    for qa in dummy_qa:
+        if qa["question"].lower() in question:
+            answer = qa["answer"]
+            break
+
+    return jsonify({'answer': answer})
+
+if __name__ == '__main__':
+    app.run(debug=True)

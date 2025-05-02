@@ -1,0 +1,91 @@
+body {
+  font-family: "Inter", sans-serif;
+  margin: 0;
+  background-color: #f2f7f4;
+  color: #333;
+}
+
+.container {
+  max-width: 850px;
+  margin: auto;
+  padding: 20px;
+}
+
+header {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+h1 {
+  font-size: 2.5em;
+  color: #2e7d32;
+}
+
+.greeting {
+  font-size: 1.2em;
+  color: #555;
+}
+
+.artikel {
+  background: #ffffff;
+  border-left: 6px solid #4caf50;
+  padding: 20px;
+  border-radius: 8px;
+  margin-bottom: 30px;
+  line-height: 1.7;
+}
+
+.artikel h2 {
+  margin-top: 0;
+  color: #388e3c;
+}
+
+.ask-section {
+  background: #e8f5e9;
+  padding: 20px;
+  border-radius: 8px;
+}
+
+.ask-section h2 {
+  color: #2e7d32;
+}
+
+textarea {
+  width: 100%;
+  padding: 10px;
+  font-size: 16px;
+  border-radius: 6px;
+  border: 1px solid #ccc;
+  margin-top: 10px;
+}
+
+button {
+  margin-top: 10px;
+  padding: 10px 20px;
+  font-size: 16px;
+  background-color: #4caf50;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+button:hover {
+  background-color: #388e3c;
+}
+
+.answer-box {
+  margin-top: 20px;
+  background-color: #fff;
+  padding: 15px;
+  border-radius: 6px;
+  border: 1px solid #c8e6c9;
+  font-weight: 500;
+}
+
+footer {
+  margin-top: 40px;
+  text-align: center;
+  font-size: 0.9em;
+  color: #777;
+}
